@@ -1,0 +1,6 @@
+node_modules
+0-admin
+**/resources/*
+!**/resources/*.zip
+**/corrections
+2-tp
