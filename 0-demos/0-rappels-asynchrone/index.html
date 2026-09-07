@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <button>Cliquez-moi</button>
+</head>
+<body>
+    <script>
+        console.log('Début');
+        setTimeout(function() {
+            console.log('après 2 secondes')
+        }, 2000)
+        // contexte événement
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', function() {
+            console.log("this = élément HTML button qui a déclenché l'événement", this)
+            console.log("L'utilisateur a cliqué sur le bouton");
+        })
+        console.log('Fin');
+    </script>
+</body>
+</html>
