@@ -1,22 +1,40 @@
 export const cleanUsers = rawUsers.map((user) => {
-  user.firstName = user.firstName.trim();
-  user.lastName = user.lastName.trim();
-  const initial = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
-  const formatedName = (name) => {
-    `${name.charAt(0).toUpperCase()} ${name.slice(1).toLowerCase()}`;
+  // copie de user pour ne pas modifier les infos directement
+  const newUser =  { ...user } 
+  newUser.firstName = newUser.firstName.trim();
+  newUser.lastName = newUser.lastName.trim();
+  const initial = `${newUser.firstName.charAt(0)}${newUser.lastName.charAt(0)}`;
+  const firstLetterUpperCase = (name) => {
+    `${name.charAt(0).toUpperCase()}${name.slice(1).toLowerCase()}`;
   };
-  return {
-    ...user,
-    fullName: `${formatedName(user.firstName)} ${formatedName(user.lastName)}`,
-    age: Number(user.age),
-    initial,
-  };
+  newUser.fullName = `${firstLetterUpperCase(user.firstName)} ${firstLetterUpperCase(user.lastName)}`
+  newUser.age = Number(user.age)
+  newUser.initial = initial
+  return newUser
 });
 
 export function filterArticle(items, property, value) {
-  return items.filter((item) => item[property] === value);
+  return items.filter((item) => Object.hasOwn(item, property) && item[property] === value);
 }
 
+export function filterArticleandCompareByIntern(data, key, operator, value) {
+  return data.filter(article => compareByIntern(article[key], operator, value));
+}
+
+export function compareByIntern(value, operator, target) {
+  switch (operator) {
+    case "=":  return value === target;
+    case ">":  return value > target;
+    case ">=": return value >= target;
+    case "<":  return value < target;
+    case "<=": return value <= target;
+    default:   return false;
+  }
+}
+ 
+ 
+const catHardware = filterArticle(articles, 'category', 'Hardware')
+const hardwareEqual150 = filterArticle(catHardware, 'price', 150);
 export function computeTotalStock(stocks) {
   return stocks.reduce((acc, item) => {
     return acc + item.price;
