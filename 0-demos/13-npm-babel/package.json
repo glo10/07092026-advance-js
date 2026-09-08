@@ -1,0 +1,19 @@
+{
+  "name": "demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/cli": "^8.0.4",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  }
+}
