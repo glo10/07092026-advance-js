@@ -1,5 +1,5 @@
 // Q5. classe Notification
-class Notification {
+export default class Notification {
   constructor(message, timestamp = new Date()) {
     this.message = message;
     this.timestamp = timestamp;

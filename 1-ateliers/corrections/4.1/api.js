@@ -15,6 +15,12 @@ export function fetchUserData(userId) {
 export async function findUsers(url = 'https://api.github.com/users' ) {
   return fetch(url)
   .then(res => res.json())
-  .then(users => users.map(({id, login, url }) => { id, login, url } ))
+  .then(users => users.map(({ id, login, url}) => ({ id, login, url })))
+  /**
+   * Syntaxe longue
+   * .then(users => users.map((user) => {
+      return { id: user.id, login : user.login, url : user.url }
+  }))
+   */
   .catch(error => error)
 }
