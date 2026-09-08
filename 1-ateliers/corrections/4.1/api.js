@@ -1,0 +1,20 @@
+// Q7
+export function fetchUserData(userId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (userId % 2 === 0) {
+        resolve({ id: userId, isIdEven : true});
+      } else {
+        reject(new Error(`${userId} is odd`));
+      }
+    }, 500);
+  });
+}
+
+// Q9
+export async function findUsers(url = 'https://api.github.com/users' ) {
+  return fetch(url)
+  .then(res => res.json())
+  .then(users => users.map(({id, login, url }) => { id, login, url } ))
+  .catch(error => error)
+}
