@@ -7,7 +7,7 @@ export function fetchUserData(userId) {
       } else {
         reject(new Error(`${userId} is odd`));
       }
-    }, 500);
+    }, 0);
   });
 }
 
