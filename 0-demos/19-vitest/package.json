@@ -1,0 +1,14 @@
+{
+  "name": "19-vitest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "type": "module",
+  "devDependencies": {
+    "vitest": "^5.0.0"
+  }
+}
