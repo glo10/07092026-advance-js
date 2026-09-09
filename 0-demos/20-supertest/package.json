@@ -1,0 +1,15 @@
+{
+  "name": "20-supertest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "type": "module",
+  "devDependencies": {
+    "supertest": "^7.2.2",
+    "vitest": "^5.0.0"
+  }
+}
