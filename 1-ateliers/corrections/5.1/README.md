@@ -22,3 +22,101 @@ c'est une petite unité de code responsable de la transformation d'une **seule**
 A l'inverse d'un **preset**, un **ensemble pré-configuré de plugins**. `@babel/preset-env` ne regroupe que les fonctionnalités ayant atteint un stade de maturité officiel (Stage 3/4 au TC39).
 
 Pour une proposition très récente ou expérimentale, il faut ajouter le plugin individuel manuellement depuis la configuration `"plugins": [...]`.
+
+---
+
+## Sources
+
+<!-- AUTO-GENERATED -->
+
+### 1-ateliers/corrections/5.1
+
+#### `1-ateliers/corrections/5.1/babel.config.json`
+
+```json
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ie": "11"
+        },
+        "corejs": 3
+      }
+    ]
+  ]
+}
+```
+
+#### `1-ateliers/corrections/5.1/package.json`
+
+```json
+{
+  "name": "5.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/main.cjs",
+    "build": "babel src -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7"
+  }
+}
+
+```
+
+#### `1-ateliers/corrections/5.1/src/main.cjs`
+
+```
+const myMath = require('./modules/my-math');
+
+console.log('add', myMath.add(2,4));
+console.log('multiply', myMath.multiply(2,4));
+console.log('minus', myMath.minus(2,4));
+
+try {
+    console.log('divide', divide(10,2));
+} catch (error) {
+    console.error('Error divide', error)
+}
+```
+
+#### `1-ateliers/corrections/5.1/src/modules/my-math.cjs`
+
+```
+function add(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function minus(a, b) {
+  return a - b;
+}
+
+function divide(a, b) {
+  if (b != 0) return a / b;
+  throw new Error("divide by 0 imposible");
+}
+
+module.export = {
+  add,
+  multiply,
+  minus,
+  divide,
+};
+
+```
+
+<!-- END AUTO-GENERATED -->
